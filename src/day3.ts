@@ -42,7 +42,15 @@ export const puzzle6 = async (): Promise<number> => {
   const reader = readline.createInterface({
     input: fs.createReadStream(inputPath)
   });
-  //   Convert report .txt to linked list
+  /*
+    Read file and create an array (report) of arrays where each
+    element is an array of the bits of that line
+
+    [
+        [1, 1, 1, 0, 0, 1, 1, 0]
+        ...
+    ]
+  */
   const report = [];
   for await (const line of reader) {
     const lineArray = line.split("");
@@ -52,7 +60,18 @@ export const puzzle6 = async (): Promise<number> => {
     });
     report.push(bitArray);
   }
+  /*
+    Global cursor for bit (horizontal) value for looping through
+    should probably be a for loop, but I'm lazy
+  */
   let bit = 0;
+  /*
+    Recursive function that finds the rate (oxygen or co2)
+    Takes a value of indexes that represents the remaining items in the
+    report. Removes all of the 1 bitted or 0 bittes indexes and reruns
+    with the remainder until one element is left, the index number in the report
+    that represents the rate.
+  */
   const findRate = (indexes: Array<number>, leastCommon = false): number => {
     if (indexes.length <= 1) return indexes[0];
     const ones = [];
