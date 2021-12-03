@@ -69,29 +69,29 @@ export const puzzle6 = async (): Promise<number> => {
     if (ones.length > zeros.length) {
       // One is most common
       if (leastCommon) {
-        // Remove 1s and rerun
-        return findRate(indexes.filter((x) => !ones.includes(x)));
+        // Keep 0s only
+        return findRate(indexes.filter((x) => zeros.includes(x)));
       } else {
-        // Remove 0s
-        return findRate(indexes.filter((x) => !zeros.includes(x)));
+        // Keep 1s
+        return findRate(indexes.filter((x) => ones.includes(x)));
       }
     } else if (ones.length === zeros.length) {
       // Tie game
       if (leastCommon) {
-        // Remove 1s and rerun
-        return findRate(indexes.filter((x) => !ones.includes(x)));
+        // Keep 0s
+        return findRate(indexes.filter((x) => zeros.includes(x)));
       } else {
-        // Remove 0s
-        return findRate(indexes.filter((x) => !zeros.includes(x)));
+        // Keep 1s
+        return findRate(indexes.filter((x) => ones.includes(x)));
       }
     } else {
       // Zero is most common
       if (leastCommon) {
-        // Remove 0s
-        return findRate(indexes.filter((x) => !zeros.includes(x)));
+        // Keep 1s
+        return findRate(indexes.filter((x) => ones.includes(x)));
       } else {
-        // Remove 1s
-        return findRate(indexes.filter((x) => !ones.includes(x)));
+        // Keep 0s
+        return findRate(indexes.filter((x) => zeros.includes(x)));
       }
     }
   };
