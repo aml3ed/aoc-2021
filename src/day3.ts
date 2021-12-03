@@ -105,14 +105,18 @@ export const puzzle6 = async (): Promise<number> => {
       }
     }
   };
-  // Find gamma rate
+  // Find the index of the oxygen rate
   const oxygenRateIndex = findRate(Array.from(Array(report.length).keys()));
-  bit = 0;
-  const co2RateIndex = findRate(Array.from(Array(report.length).keys()), true);
-  console.log(oxygenRateIndex, co2RateIndex);
+  // Convert binary oxygen rate to decimal
   const oxygenRate = parseInt(report[oxygenRateIndex].join(""), 2);
 
+  // Find the index of the co2 rate
+  bit = 0;
+  const co2RateIndex = findRate(Array.from(Array(report.length).keys()), true);
+  // Convert binary co2 rate to decimal
   const co2Rate = parseInt(report[co2RateIndex].join(""), 2);
+
+  // Return multiplied oxygen rate by co2 rate
   console.log(oxygenRate, co2Rate);
   return oxygenRate * co2Rate;
 };
