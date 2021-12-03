@@ -1,10 +1,7 @@
 import * as fs from "fs";
-import * as path from "path";
 import * as readline from "readline";
 
-const inputPath = path.join(__dirname, "..", "data", "day3.txt");
-
-export const puzzle5 = async (): Promise<number> => {
+export const puzzle5 = async (inputPath: string): Promise<number> => {
   const reader = readline.createInterface({
     input: fs.createReadStream(inputPath)
   });
@@ -38,7 +35,7 @@ export const puzzle5 = async (): Promise<number> => {
   return gammaDecimal * epsilonDecimal;
 };
 
-export const puzzle6 = async (): Promise<number> => {
+export const puzzle6 = async (inputPath: string): Promise<number> => {
   const reader = readline.createInterface({
     input: fs.createReadStream(inputPath)
   });
@@ -60,6 +57,7 @@ export const puzzle6 = async (): Promise<number> => {
     });
     report.push(bitArray);
   }
+  console.log(report);
   /*
     Global cursor for bit (horizontal) value for looping through
     should probably be a for loop, but I'm lazy
