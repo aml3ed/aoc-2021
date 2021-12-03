@@ -71,7 +71,13 @@ export const puzzle6 = async (inputPath: string): Promise<number> => {
     that represents the rate.
   */
   const findRate = (indexes: Array<number>, leastCommon = false): number => {
+    // Base case, only one index left: the rate.
     if (indexes.length <= 1) return indexes[0];
+
+    /*
+    Sort the indexes by whether they 
+    have a 1 or 0 at the current bit
+    */
     const ones = [];
     const zeros = [];
     indexes.forEach((index) => {
@@ -82,7 +88,13 @@ export const puzzle6 = async (inputPath: string): Promise<number> => {
         zeros.push(index);
       }
     });
+    // Increment bit cursor
     bit += 1;
+
+    /*
+     Compare whether there are more 1 bits
+     than 0 bits
+    */
     if (ones.length >= zeros.length) {
       // One is most common
       if (leastCommon) {
