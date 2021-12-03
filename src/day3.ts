@@ -82,7 +82,7 @@ export const puzzle6 = async (): Promise<number> => {
         return findRate(indexes.filter((x) => !ones.includes(x)));
       } else {
         // Remove 0s
-        return findRate(indexes.filter((x) => !ones.includes(x)));
+        return findRate(indexes.filter((x) => !zeros.includes(x)));
       }
     } else {
       // Zero is most common
