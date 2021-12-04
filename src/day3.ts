@@ -57,7 +57,6 @@ export const puzzle6 = async (inputPath: string): Promise<number> => {
     });
     report.push(bitArray);
   }
-  console.log(report);
   /*
     Global cursor for bit (horizontal) value for looping through
     should probably be a for loop, but I'm lazy
@@ -99,19 +98,31 @@ export const puzzle6 = async (inputPath: string): Promise<number> => {
       // One is most common
       if (leastCommon) {
         // Keep 0s only
-        return findRate(indexes.filter((x) => zeros.includes(x)));
+        return findRate(
+          indexes.filter((x) => zeros.includes(x)),
+          leastCommon
+        );
       } else {
         // Keep 1s
-        return findRate(indexes.filter((x) => ones.includes(x)));
+        return findRate(
+          indexes.filter((x) => ones.includes(x)),
+          leastCommon
+        );
       }
     } else {
       // Zero is most common
       if (leastCommon) {
         // Keep 1s
-        return findRate(indexes.filter((x) => ones.includes(x)));
+        return findRate(
+          indexes.filter((x) => ones.includes(x)),
+          leastCommon
+        );
       } else {
         // Keep 0s
-        return findRate(indexes.filter((x) => zeros.includes(x)));
+        return findRate(
+          indexes.filter((x) => zeros.includes(x)),
+          leastCommon
+        );
       }
     }
   };
