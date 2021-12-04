@@ -96,34 +96,30 @@ export const puzzle6 = async (inputPath: string): Promise<number> => {
     */
     if (ones.length >= zeros.length) {
       // One is most common
-      if (leastCommon) {
-        // Keep 0s only
-        return findRate(
-          indexes.filter((x) => zeros.includes(x)),
-          leastCommon
-        );
-      } else {
-        // Keep 1s
-        return findRate(
-          indexes.filter((x) => ones.includes(x)),
-          leastCommon
-        );
-      }
+      return leastCommon
+        ? // Keep 0s
+          findRate(
+            indexes.filter((x) => zeros.includes(x)),
+            leastCommon
+          )
+        : // Keep 1s
+          findRate(
+            indexes.filter((x) => ones.includes(x)),
+            leastCommon
+          );
     } else {
       // Zero is most common
-      if (leastCommon) {
-        // Keep 1s
-        return findRate(
-          indexes.filter((x) => ones.includes(x)),
-          leastCommon
-        );
-      } else {
-        // Keep 0s
-        return findRate(
-          indexes.filter((x) => zeros.includes(x)),
-          leastCommon
-        );
-      }
+      return leastCommon
+        ? // Keep 0s
+          findRate(
+            indexes.filter((x) => ones.includes(x)),
+            leastCommon
+          )
+        : // Keep 1s
+          findRate(
+            indexes.filter((x) => zeros.includes(x)),
+            leastCommon
+          );
     }
   };
   // Find the index of the oxygen rate
